@@ -3,6 +3,7 @@ package com.example.backend.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -16,6 +17,6 @@ public class Author {
     private String authorName;
 
     @OneToMany(mappedBy = "author")
-    private Set<Article> articles;
+    private List<Article> articles;
 
 }

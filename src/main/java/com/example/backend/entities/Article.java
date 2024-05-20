@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -31,6 +32,6 @@ public class Article {
     private Author author;
 
     @OneToMany(mappedBy = "article")
-    private Set<ArticleCategory> articleCategories;
+    private List<ArticleCategory> articleCategories;
 
 }
