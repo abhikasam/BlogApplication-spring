@@ -1,5 +1,6 @@
 package com.example.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,6 +34,7 @@ public class Article {
     private Author author;
 
     @OneToMany(mappedBy = "article",fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<ArticleCategory> articleCategories;
 
     public int getAuthorId(){

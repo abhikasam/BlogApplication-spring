@@ -16,4 +16,12 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    public Category getCategory(int id){
+        var category=categoryRepository.findById(id);
+        if(category.isPresent()){
+            return category.get();
+        }
+        return new Category();
+    }
+
 }

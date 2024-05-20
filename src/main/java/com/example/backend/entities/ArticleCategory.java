@@ -1,5 +1,6 @@
 package com.example.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,10 +15,12 @@ public class ArticleCategory {
 
     @ManyToOne
     @JoinColumn(name = "articleid")
+    @JsonManagedReference
     private Article article;
 
     @ManyToOne
     @JoinColumn(name = "categoryid")
+    @JsonManagedReference
     private Category category;
 
     public int getArticleId(){

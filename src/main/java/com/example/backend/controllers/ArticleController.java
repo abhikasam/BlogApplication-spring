@@ -28,7 +28,7 @@ public class ArticleController {
         var articles=articleService.articles();
         articles=xPaginationService.getPaginatedResult(articles,xPagination);
         xPaginationService.setXPagination(xPagination,response);
-        return articleService.articles();
+        return articles;
     }
 
     @GetMapping("{authors}/{categories}")

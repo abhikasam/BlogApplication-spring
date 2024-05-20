@@ -1,5 +1,6 @@
 package com.example.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class Author {
     private String authorName;
 
     @OneToMany(mappedBy = "author",fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Article> articles;
 
 }

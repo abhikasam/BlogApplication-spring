@@ -16,4 +16,12 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
+    public Author getAuthor(int id){
+        var author=authorRepository.findById(id);
+        if(author.isPresent()){
+            return author.get();
+        }
+        return new Author();
+    }
+
 }
