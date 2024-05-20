@@ -16,6 +16,16 @@ public class Category {
     @Column(name = "categoryname")
     private String CategoryName;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
     private List<ArticleCategory> articleCategories;
+
+    public int[] articleIds(){
+        if(articleCategories!=null){
+            return articleCategories.stream()
+                    .mapToInt(i->i.getArticleId())
+                    .toArray();
+        }
+        return new int[]{};
+    }
+
 }

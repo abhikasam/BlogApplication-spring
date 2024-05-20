@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -31,7 +32,19 @@ public class Article {
     @JoinColumn(name = "authorid")
     private Author author;
 
-    @OneToMany(mappedBy = "article")
+    @OneToMany(mappedBy = "article",fetch = FetchType.LAZY)
     private List<ArticleCategory> articleCategories;
 
+    public int getAuthorId(){
+        if(author!=null)
+            return author.getAuthorId();
+        return 0;
+    }
+
+    public int[] categoryIds(){
+        if(articleCategories!=null){
+            return articleCategories.stream().mapToInt(i->i.getCategoryId()).toArray();
+        }
+        return new int[]{};
+    }
 }
