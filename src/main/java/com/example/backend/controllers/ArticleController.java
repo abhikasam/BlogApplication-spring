@@ -44,7 +44,7 @@ public class ArticleController {
         int[] categoryIds=gson.fromJson(categories,int[].class);
 
         var articles=articleService.articles().stream()
-                .filter(i-> Arrays.stream(authorIds).anyMatch(a-> a==i.getAuthorId()))
+                .filter(i-> Arrays.stream(authorIds).anyMatch(a-> a==i.getAuthor().getAuthorId()))
                 .filter(i-> Arrays.stream(i.categoryIds())
                         .anyMatch(ic-> Arrays.stream(categoryIds).anyMatch(c-> ic==c  ) ))
                 .collect(Collectors.toList());

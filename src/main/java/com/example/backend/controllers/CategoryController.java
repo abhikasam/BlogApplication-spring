@@ -4,10 +4,12 @@ import com.example.backend.entities.Category;
 import com.example.backend.entities.XPagination;
 import com.example.backend.services.CategoryService;
 import com.example.backend.services.XPaginationService;
+import jakarta.annotation.Nullable;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,13 +23,20 @@ public class CategoryController {
 
     @GetMapping(value = {"","/index"})
     public List<Category> index(){
-        return categoryService.categories();
+        List<Category> categories=new ArrayList<>();
+        for(var dbCategory : categoryService.categories()){
+            var category=new Category();
+            category.setCategoryId(dbCategory.getCategoryId());
+            category.setCategoryName(dbCategory.getCategoryName());
+            categories.add(category);
+        }
+        return categories;
     }
 
     @GetMapping("{id}")
     public Category getCategory(
             @PathVariable int id,
-            @RequestHeader("x-pagination") String xpag,
+            @RequestHeader("x-pagination") @Nullable String xpag,
             HttpServletResponse response
     ){
         XPagination xPagination=xPaginationService.getxPagination(xpag);

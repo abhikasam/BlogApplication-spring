@@ -2,11 +2,11 @@
   {{author.authorName}}
 </a>
 
-<pagination *ngIf="author.articles.length"
+<pagination *ngIf="author.articles!=null && author.articles.length"
             (update)="updatePage($event)"
             [params]="xpagination"></pagination>
 
-<div class="row" *ngIf="author.articles.length">
+<div class="row" *ngIf="author.articles!=null && author.articles.length">
   <div class="col-lg-3 col-md-6" *ngFor="let article of author.articles">
     <article-model [article]="article"></article-model>
   </div>

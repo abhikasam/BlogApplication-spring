@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,14 @@ public class AuthorController {
 
     @GetMapping(value = {"","/index"})
     public List<Author> index(){
-        return authorService.authors();
+        List<Author> authors=new ArrayList<>();
+        for(var dbAuthor : authorService.authors()){
+            var author=new Author();
+            author.setAuthorId(dbAuthor.getAuthorId());
+            author.setAuthorName(dbAuthor.getAuthorName());
+            authors.add(author);
+        }
+        return authors;
     }
 
     @GetMapping("{id}")

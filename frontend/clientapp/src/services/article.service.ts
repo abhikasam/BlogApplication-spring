@@ -13,10 +13,10 @@ export class ArticleService {
   ) { }
 
   getArticles() {
-    var httpHeaders = new HttpHeaders({
-      "x-pagination": ''
+    var headers=new HttpHeaders({
+      'x-pagination':''
     })
-    return this.http.get<any>('/api/article', { observe:'response',headers:httpHeaders })
+    return this.http.get<any>('/api/article', { observe:'response',headers:headers })
   }
 
   updateArticles(articleFilters: ArticleFilter, xpagination: XPagination) {

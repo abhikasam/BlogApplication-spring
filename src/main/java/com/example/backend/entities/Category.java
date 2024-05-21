@@ -1,11 +1,15 @@
 package com.example.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -18,7 +22,7 @@ public class Category {
     private String CategoryName;
 
     @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonIgnore
     private List<ArticleCategory> articleCategories;
 
     public int[] articleIds(){
@@ -30,4 +34,11 @@ public class Category {
         return new int[]{};
     }
 
+    @JsonProperty("articles")
+    public List<Article> articles(){
+        if(articleCategories!=null){
+            return articleCategories.stream().map(i->i.getArticle()).collect(Collectors.toList());
+        }
+        return new ArrayList<>();
+    }
 }

@@ -15,12 +15,10 @@ public class ArticleCategory {
 
     @ManyToOne
     @JoinColumn(name = "articleid")
-    @JsonManagedReference
     private Article article;
 
     @ManyToOne
     @JoinColumn(name = "categoryid")
-    @JsonManagedReference
     private Category category;
 
     public int getArticleId(){
