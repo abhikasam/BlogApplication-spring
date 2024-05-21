@@ -1,9 +1,9 @@
 package com.example.backend.controllers;
 
-import com.example.backend.entities.Category;
-import com.example.backend.entities.XPagination;
-import com.example.backend.services.CategoryService;
-import com.example.backend.services.XPaginationService;
+import com.example.backend.blog.entity.Category;
+import com.example.backend.shared.entity.XPagination;
+import com.example.backend.blog.services.CategoryService;
+import com.example.backend.shared.service.XPaginationService;
 import jakarta.annotation.Nullable;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

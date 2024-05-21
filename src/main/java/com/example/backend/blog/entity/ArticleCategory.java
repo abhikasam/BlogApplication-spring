@@ -1,6 +1,5 @@
-package com.example.backend.entities;
+package com.example.backend.blog.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -1,7 +1,7 @@
-package com.example.backend.services;
+package com.example.backend.blog.services;
 
-import com.example.backend.entities.Author;
-import com.example.backend.repository.IAuthorRepository;
+import com.example.backend.blog.entity.Author;
+import com.example.backend.blog.repository.IAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

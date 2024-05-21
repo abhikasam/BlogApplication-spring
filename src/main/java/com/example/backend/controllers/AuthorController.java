@@ -1,9 +1,9 @@
 package com.example.backend.controllers;
 
-import com.example.backend.entities.Author;
-import com.example.backend.entities.XPagination;
-import com.example.backend.services.AuthorService;
-import com.example.backend.services.XPaginationService;
+import com.example.backend.blog.entity.Author;
+import com.example.backend.shared.entity.XPagination;
+import com.example.backend.blog.services.AuthorService;
+import com.example.backend.shared.service.XPaginationService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -20,8 +20,10 @@ export class ArticleService {
   }
 
   updateArticles(articleFilters: ArticleFilter, xpagination: XPagination) {
-    var authors = JSON.stringify(articleFilters.authorIds)
-    var categories = JSON.stringify(articleFilters.categoryIds)
+
+    var authors="a"+articleFilters.authorIds.join(',')
+    var categories ="a"+articleFilters.categoryIds.join(',')
+
     var paginationDetails = JSON.stringify(xpagination);
     var httpHeaders = new HttpHeaders({
       "x-pagination": paginationDetails

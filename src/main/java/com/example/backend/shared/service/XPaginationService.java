@@ -1,6 +1,6 @@
-package com.example.backend.services;
+package com.example.backend.shared.service;
 
-import com.example.backend.entities.XPagination;
+import com.example.backend.shared.entity.XPagination;
 import com.google.gson.Gson;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
